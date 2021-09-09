@@ -1,30 +1,30 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-// #include "keymap_german.h"
-// #include "keymap_nordic.h"
-// #include "keymap_french.h"
-// #include "keymap_spanish.h"
-// #include "keymap_hungarian.h"
-// #include "keymap_swedish.h"
-// #include "keymap_br_abnt2.h"
-// #include "keymap_canadian_multilingual.h"
-// #include "keymap_german_ch.h"
-// #include "keymap_jp.h"
-// #include "keymap_korean.h"
-// #include "keymap_bepo.h"
-// #include "keymap_italian.h"
-// #include "keymap_slovenian.h"
-// #include "keymap_lithuanian_azerty.h"
-// #include "keymap_danish.h"
-// #include "keymap_norwegian.h"
-// #include "keymap_portuguese.h"
-// #include "keymap_contributions.h"
-// #include "keymap_czech.h"
-// #include "keymap_romanian.h"
-// #include "keymap_russian.h"
+#include "keymap_german.h"
+#include "keymap_nordic.h"
+#include "keymap_french.h"
+#include "keymap_spanish.h"
+#include "keymap_hungarian.h"
+#include "keymap_swedish.h"
+#include "keymap_br_abnt2.h"
+#include "keymap_canadian_multilingual.h"
+#include "keymap_german_ch.h"
+#include "keymap_jp.h"
+#include "keymap_korean.h"
+#include "keymap_bepo.h"
+#include "keymap_italian.h"
+#include "keymap_slovenian.h"
+#include "keymap_lithuanian_azerty.h"
+#include "keymap_danish.h"
+#include "keymap_norwegian.h"
+#include "keymap_portuguese.h"
+#include "keymap_contributions.h"
+#include "keymap_czech.h"
+#include "keymap_romanian.h"
+#include "keymap_russian.h"
 #include "keymap_uk.h"
-// #include "keymap_estonian.h"
-// #include "keymap_belgian.h"
+#include "keymap_estonian.h"
+#include "keymap_belgian.h"
 #include "keymap_us_international.h"
 
 #define KC_MAC_UNDO LGUI(KC_Z)
@@ -102,6 +102,8 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
+    [0] = { {146,224,255}, {214,250,241}, {214,250,241}, {214,250,241}, {146,224,255}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {169,120,255}, {214,250,241}, {214,250,241}, {0,204,255}, {146,224,255}, {146,224,255}, {214,250,241}, {214,250,241}, {214,250,241}, {146,224,255}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {214,250,241}, {169,120,255}, {214,250,241}, {214,250,241}, {0,204,255}, {146,224,255} },
+
     [1] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {105,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
     [2] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {12,225,241}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
@@ -126,8 +128,11 @@ void set_layer_color(int layer) {
 }
 
 void rgb_matrix_indicators_user(void) {
-  if (keyboard_config.disable_layer_led) { return; }
+  if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
+    case 0:
+      set_layer_color(0);
+      break;
     case 1:
       set_layer_color(1);
       break;
