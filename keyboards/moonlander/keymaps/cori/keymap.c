@@ -101,6 +101,35 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
+/*  ledmap codes
+{0,0,255}:  pink
+{0,255,0}:  dark
+{255,0,0}:  dark
+{0,0,200}:  more pink
+{0,0,100}:  dimmer? pink
+{255,255,255}: red
+{255,0,255}: magenta / lavendar?
+{0,255,255}: red
+{0,128,128}: dim pink
+{128,128,128}: dim blue
+{128,255,255}: pretty bright blue
+{128,1,255}:  brightish pink
+{1,255,255}:  red
+{128,255,1}: dark
+
+hypothesize that the last value is ... value
+
+{128,255,128}: also dark - maybe last isn't exactly value then, or the scale is weird
+{64,255,255}: bright green
+{64,128,255}: pale something
+{64,255,128}: dim green
+{64,64,64}: dim sorta grey - 
+{255,64,64}: grey-pink?
+
+ok, so I think this is HSV with 255 degree S and V scales, instead of percents
+{max-255,max-255,max-255}
+*/
+#define TEST {255,64,64}
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [0] = { 
         {32,176,255}, {32,176,255}, {32,176,255}, {32,176,255}, {32,176,255}, //    LHC4?
@@ -110,7 +139,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         {243,222,234}, {243,222,234}, {243,222,234}, {243,222,234}, {243,222,234}, //   LHC1
         {105,255,255}, {105,255,255}, {105,255,255}, {105,255,255}, //   LHC6?
         {249,228,255}, {249,228,255}, {249,228,255}, 
-        {255,0,0}, {255,0,0}, {255,0,0}, {255,0,0}, //  LH thumb
+        TEST, TEST, TEST, TEST, //  LH thumb
         {233,218,217}, {233,218,217}, {233,218,217}, {233,218,217}, {233,218,217},  //  right hand from right?
         {180,255,233}, {180,255,233}, {180,255,233}, {180,255,233}, {180,255,233}, 
         {14,222,242}, {14,222,242}, {255,220,201}, {14,222,242}, {14,222,242}, 
@@ -118,7 +147,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         {14,255,255}, {14,255,255}, {14,255,255}, {14,255,255}, {14,255,255}, 
         {154,255,255}, {154,255,255}, {154,255,255}, {154,255,255}, 
         {35,255,255}, {35,255,255}, {35,255,255}, 
-        {255,0,0}, {255,0,0}, {255,0,0}, {255,0,0} //  RH thumb
+        TEST, TEST, TEST, TEST //  RH thumb
     },
 
     [1] = { 
