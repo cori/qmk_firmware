@@ -129,7 +129,7 @@ hypothesize that the last value is ... value
 ok, so I think this is HSV with 255 degree S and V scales, instead of percents
 {max-255,max-255,max-255}
 */
-#define TEST {255,64,64}
+#define TEST {131,255,255}
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [0] = { 
         {32,176,255}, {32,176,255}, {32,176,255}, {32,176,255}, {32,176,255}, //    LHC4?
