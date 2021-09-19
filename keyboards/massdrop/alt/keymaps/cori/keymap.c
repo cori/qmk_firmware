@@ -215,6 +215,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+uint32_t layer_state_set_user(uint32_t state) {
+//   uint8_t layer = biton32(state);
+//   led_t led_state = host_keyboard_led_state();
+//   switch (layer) {
+    switch (get_highest_layer(state)) {
+        case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
+            // matrix_init_user();
+            // rgblight_sethsv(0, 255, 255); // sets the color to teal/cyan without saving
+            // rgblight_sethsv(HSV_PURPLE);
+            // rgblight_sethsv_at(HSV_BLUE, 0, 2);
+            // rgb_matrix_sethsv(192, 112, 255);
+            // rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+            // rgb_matrix_set_color_all(130, 255, 255);
+            break;
+        case _FUNC:
+            dprintf("Switching to L_FUNC");
+            rgblight_mode(42);
+            rgblight_sethsv(HSV_CORAL); // 
+            // rgblight_mode(7);
+            // rgblight_sethsv_at(36, 255, 255, 3);
+            // rgblight_sethsv_coral_at(3);
+            break;
+    }
+  return state;
+}
+
 led_instruction_t led_instructions[] = {
     //LEDs are normally inactive, no processing is performed on them
     //Flags are used in matching criteria for an LED to be active and indicate how to color it
