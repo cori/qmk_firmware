@@ -117,30 +117,10 @@ void matrix_init_user(void) {
 
 void keyboard_post_init_user(void) {
   // Call the post init code.
-//   rgblight_enable_noeeprom(); // enables Rgb, without saving settings
-//   rgblight_sethsv_noeeprom(180, 255, 255); // sets the color to teal/cyan without saving
-//   rgblight_mode(); // sets mode to Fast breathing without saving
   rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
   rgb_matrix_sethsv(HSV_PURPLE);
-    //rgb_enabled_flag = true;          // Initially, keyboard RGB is enabled. Change to false config.h initializes RGB disabled.
-    // rgblight_mode(lock_mode);
-    // rgblight_enable();
-    // rgblight_sethsv(hue, sat, val);
     dprintf("Initializing in matrix_init_user");
-    // rgblight_enable();
-    // rgblight_mode(RGBLIGHT_MODE_BREATHE + 1);
-    // rgblight_sethsv(HSV_ORANGE);
-//     rgblight_sethsv_at(HSV_BLUE, 17);
 }
-
-// void keyboard_post_init_user(void) {
-//     rgb_matrix_enable();
-// // #ifdef RGBLIGHT_ENABLE
-//     // rgblight_enable_noeeprom();
-//     // rgblight_sethsv_noeeprom(HSV_PURPLE);
-//     // rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
-// // #endif
-// }
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -218,78 +198,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
-//   uint8_t layer = biton32(state);
-//   led_t led_state = host_keyboard_led_state();
-//   switch (layer) {
     switch (get_highest_layer(state)) {
         case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
-            // matrix_init_user();
-            // rgblight_sethsv(0, 255, 255); // sets the color to teal/cyan without saving
             rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
-// rgb_matrix_set_color_all(RGB_PURPLE);
-            // rgblight_sethsv(HSV_PURPLE);
-            // rgblight_sethsv_at(HSV_BLUE, 0, 2);
-            // rgb_matrix_sethsv(192, 112, 255);
-            // rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
-            // rgb_matrix_set_color_all(130, 255, 255);
             break;
         case _FUNC:
             dprintf("Switching to L_FUNC");
-            // rgblight_mode(42);
-            // rgblight_sethsv(HSV_BLUE); // 
             rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
-// rgb_matrix_set_color_all(RGB_BLUE);            // rgblight_mode(7);
-            // rgblight_sethsv_at(36, 255, 255, 3);
-            // rgblight_sethsv_coral_at(3);
             break;
     }
   return state;
 }
-
-// led_instruction_t led_instructions[] = {
-//     //LEDs are normally inactive, no processing is performed on them
-//     //Flags are used in matching criteria for an LED to be active and indicate how to color it
-//     //Flags can be found in tmk_core/protocol/arm_atsam/md_rgb_matrix.h (prefixed with LED_FLAG_)
-//     //LED IDs can be found in config_led.h in the keyboard's directory
-//     //Examples are below
-
-//     //All LEDs use the user's selected pattern (this is the factory default)
-//     //  { .flags = LED_FLAG_USE_ROTATE_PATTERN },
-
-//     //Specific LEDs use the user's selected pattern while all others are off
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_ROTATE_PATTERN, .id0 = 0xFFFFFFFF, .id1 = 0xAAAAAAAA, .id2 = 0x55555555, .id3 = 0x11111111 },
-
-//     //Specific LEDs use specified RGB values while all others are off
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 0xFF, .id1 = 0x00FF, .id2 = 0x0000FF00, .id3 = 0xFF000000, .r = 75, .g = 150, .b = 225 },
-
-//     //All LEDs use the user's selected pattern
-//     //On layer 1, all key LEDs (except the top row which keeps active pattern) are red while all edge LEDs are green
-//     //When layer 1 is active, key LEDs use red    (id0  32 -  16: 1111 1111 1111 1111 1000 0000 0000 0000 = 0xFFFF8000) (except top row 15 - 1)
-//     //When layer 1 is active, key LEDs use red    (id1  64 -  33: 1111 1111 1111 1111 1111 1111 1111 1111 = 0xFFFFFFFF)
-//     //When layer 1 is active, key LEDs use red    (id2  67 -  65: 0000 0000 0000 0000 0000 0000 0000 0111 = 0x00000007)
-//     //When layer 1 is active, edge LEDs use green (id2  95 -  68: 1111 1111 1111 1111 1111 1111 1111 1000 = 0xFFFFFFF8)
-//     //When layer 1 is active, edge LEDs use green (id3 105 -  96: 0000 0000 0000 0000 0000 0011 1111 1111 = 0x000003FF)
-//     // { .flags = LED_FLAG_USE_ROTATE_PATTERN },
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_MATCH_LAYER | LED_FLAG_USE_RGB, .id0 = 0xFFFF8000, .id1 = 0xFFFFFFFF, .id2 = 0x00000007, .r = 255, .layer = 1 },
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_MATCH_LAYER | LED_FLAG_USE_RGB, .id2 = 0xFFFFFFF8, .id3 = 0x000003FF, .g = 127, .layer = 1 },
-
-//     //All key LEDs use red while edge LEDs use the active pattern
-//     //All key LEDs use red     (id0  32 -   1: 1111 1111 1111 1111 1111 1111 1111 1111 = 0xFFFFFFFF)
-//     //All key LEDs use red     (id1  64 -  33: 1111 1111 1111 1111 1111 1111 1111 1111 = 0xFFFFFFFF)
-//     //All key LEDs use red     (id2  67 -  65: 0000 0000 0000 0000 0000 0000 0000 0111 = 0x00000007)
-//     //Edge uses active pattern (id2  95 -  68: 1111 1111 1111 1111 1111 1111 1111 1000 = 0xFFFFFFF8)
-//     //Edge uses active pattern (id3 105 -  96: 0000 0000 0000 0000 0000 0011 1111 1111 = 0x000003FF)
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 0xFFFFFFFF, .id1 = 0xFFFFFFFF, .id2 = 0x00000007, .r = 255 },
-//     // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_ROTATE_PATTERN , .id2 = 0xFFFFFFF8, .id3 = 0x000003FF },
-
-//     // mods
-//     { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 1610670081,.id1 = 4286585856,.id2 = 7,.id3 = 0, .r = 255, .g = 0, .b = 255 },
-//     // underglow
-//     { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_PATTERN, .id0 = 0,.id1 = 0,.id2 = 4294967288,.id3 = 511, .r = 25, .g = 200, .b = 255, .pattern_id = 3 },
-//     //  alphakeys
-//     { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB | LED_FLAG_USE_ROTATE_PATTERN, .id0 = 2684297214,.id1 = 8381439,.id2 = 0,.id3 = 0, .r = 255, .g = 255, .b = 255},
-
-//     //end must be set to 1 to indicate end of instruction set
-//      { .end = 1 }
-// };
 
