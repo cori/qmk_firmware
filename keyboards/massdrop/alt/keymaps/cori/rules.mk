@@ -1,5 +1,5 @@
 # This keymap requires Massdrop Configurator support
-OPT_DEFS += -DUSE_MASSDROP_CONFIGURATOR
+# OPT_DEFS += -DUSE_MASSDROP_CONFIGURATOR
 
 # RGBLIGHT_ENABLE = yes			# Not for MD boards. This is here in case you forget.
 COMMAND_ENABLE = yes			# Commands for debug and configuration
