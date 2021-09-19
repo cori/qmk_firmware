@@ -225,7 +225,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
             // matrix_init_user();
             // rgblight_sethsv(0, 255, 255); // sets the color to teal/cyan without saving
-            rgb_matrix_sethsv(HSV_PURPLE); // sets the color to teal/cyan without saving
+            rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
 // rgb_matrix_set_color_all(RGB_PURPLE);
             // rgblight_sethsv(HSV_PURPLE);
             // rgblight_sethsv_at(HSV_BLUE, 0, 2);
