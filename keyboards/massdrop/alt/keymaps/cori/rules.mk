@@ -1,9 +1,5 @@
-# This keymap requires Massdrop Configurator support
-# OPT_DEFS += -DUSE_MASSDROP_CONFIGURATOR
-
-RGBLIGHT_ENABLE = no			# Not for MD boards. This is here in case you forget.
-COMMAND_ENABLE = yes			# Commands for debug and configuration
-CONSOLE_ENABLE = yes			# Console key
+# RGBLIGHT_ENABLE = no			# Not for MD boards. This is here in case you forget.
+COMMAND_ENABLE = no			# Commands for debug and configuration
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
 # AUTO_SHIFT_ENABLE = yes      	# Auto Shift
@@ -17,4 +13,3 @@ EXTRAKEY_ENABLE = yes			# Audio control and System control
 # RAW_ENABLE = yes				# Raw HID has not yet been implemented for this keyboard
 # COMBO_ENABLE					# Key combo feature
 # LEADER_ENABLE					# Enable leader key chording
-RGB_MATRIX_ENABLE = yes		# Enable RGB Matrix
