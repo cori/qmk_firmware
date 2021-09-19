@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-#include QMK_KEYBOARD_H
-
-enum alt_keycodes {
-    U_T_AUTO = SAFE_RANGE, //USB Extra Port Toggle Auto Detect / Always Active
-    U_T_AGCR,              //USB Toggle Automatic GCR control
-    DBG_TOG,               //DEBUG Toggle On / Off
-    DBG_MTRX,              //DEBUG Toggle Matrix Prints
-    DBG_KBD,               //DEBUG Toggle Keyboard Prints
-    DBG_MOU,               //DEBUG Toggle Mouse Prints
-    MD_BOOT,               //Restart into bootloader after hold timeout
-};
-=======
 /* Copyright 2020 elijahblake81
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,8 +14,17 @@ enum alt_keycodes {
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- #include QMK_KEYBOARD_H
+#include QMK_KEYBOARD_H
 
+enum alt_keycodes {
+    U_T_AUTO = SAFE_RANGE, //USB Extra Port Toggle Auto Detect / Always Active
+    U_T_AGCR,              //USB Toggle Automatic GCR control
+    DBG_TOG,               //DEBUG Toggle On / Off
+    DBG_MTRX,              //DEBUG Toggle Matrix Prints
+    DBG_KBD,               //DEBUG Toggle Keyboard Prints
+    DBG_MOU,               //DEBUG Toggle Mouse Prints
+    MD_BOOT,               //Restart into bootloader after hold timeout
+};
 
 #include "keymap.h"
 #include "print.h"
@@ -39,9 +35,12 @@ uint16_t hue = 150; // Color of the leds, but it doesn't seem to match HSV picke
 uint16_t sat = 255;
 uint16_t val = 255;
 
+#define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))
+#define MODS_CTRL  (get_mods() & MOD_BIT(KC_LCTL) || get_mods() & MOD_BIT(KC_RCTRL))
+#define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
+
 #define _QWERTY 0
 #define _FUNC 1
->>>>>>> Stashed changes
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_65_ansi_blocker(
@@ -69,11 +68,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 };
 
-<<<<<<< Updated upstream
-#define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))
-#define MODS_CTRL  (get_mods() & MOD_BIT(KC_LCTL) || get_mods() & MOD_BIT(KC_RCTRL))
-#define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
-=======
 #ifdef _______
 #undef _______
 #define _______ {0, 0, 0}
@@ -126,7 +120,7 @@ void keyboard_post_init_user(void) {
 //   rgblight_enable_noeeprom(); // enables Rgb, without saving settings
 //   rgblight_sethsv_noeeprom(180, 255, 255); // sets the color to teal/cyan without saving
   rgblight_mode(base_mode); // sets mode to Fast breathing without saving
-  rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+//   rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
     //rgb_enabled_flag = true;          // Initially, keyboard RGB is enabled. Change to false config.h initializes RGB disabled.
     // rgblight_mode(lock_mode);
     // rgblight_enable();
@@ -146,7 +140,6 @@ void keyboard_post_init_user(void) {
 // // #endif
 // }
 
->>>>>>> Stashed changes
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
@@ -261,7 +254,7 @@ led_instruction_t led_instructions[] = {
     // mods
     { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 1610670081,.id1 = 4286585856,.id2 = 7,.id3 = 0, .r = 255, .g = 0, .b = 255 },
     // underglow
-    { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB | LED_FLAG_USE_PATTERN, .id0 = 0,.id1 = 0,.id2 = 4294967288,.id3 = 511, .r = 25, .g = 200, .b = 255, .pattern_id = 5 },
+    { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB | LED_FLAG_USE_PATTERN, .id0 = 0,.id1 = 0,.id2 = 4294967288,.id3 = 511, .r = 25, .g = 200, .b = 255, .pattern_id = 8 },
     //  alphakeys
     { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB | LED_FLAG_USE_PATTERN, .id0 = 2684297214,.id1 = 8381439,.id2 = 0,.id3 = 0, .r = 255, .g = 255, .b = 255, .pattern_id = 48 },
 
