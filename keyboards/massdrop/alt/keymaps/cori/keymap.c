@@ -120,7 +120,8 @@ void keyboard_post_init_user(void) {
 //   rgblight_enable_noeeprom(); // enables Rgb, without saving settings
 //   rgblight_sethsv_noeeprom(180, 255, 255); // sets the color to teal/cyan without saving
 //   rgblight_mode(); // sets mode to Fast breathing without saving
-  rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
+  rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+  rgb_matrix_sethsv(HSV_PURPLE);
     //rgb_enabled_flag = true;          // Initially, keyboard RGB is enabled. Change to false config.h initializes RGB disabled.
     // rgblight_mode(lock_mode);
     // rgblight_enable();
@@ -128,7 +129,7 @@ void keyboard_post_init_user(void) {
     dprintf("Initializing in matrix_init_user");
     // rgblight_enable();
     // rgblight_mode(RGBLIGHT_MODE_BREATHE + 1);
-    rgblight_sethsv(HSV_ORANGE);
+    // rgblight_sethsv(HSV_ORANGE);
 //     rgblight_sethsv_at(HSV_BLUE, 17);
 }
 
@@ -224,7 +225,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
             // matrix_init_user();
             // rgblight_sethsv(0, 255, 255); // sets the color to teal/cyan without saving
-            rgblight_sethsv(HSV_PURPLE);
+            rgb_matrix_sethsv(HSV_PURPLE); // sets the color to teal/cyan without saving
+// rgb_matrix_set_color_all(RGB_PURPLE);
+            // rgblight_sethsv(HSV_PURPLE);
             // rgblight_sethsv_at(HSV_BLUE, 0, 2);
             // rgb_matrix_sethsv(192, 112, 255);
             // rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
@@ -233,8 +236,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         case _FUNC:
             dprintf("Switching to L_FUNC");
             // rgblight_mode(42);
-            rgblight_sethsv(HSV_BLUE); // 
-            // rgblight_mode(7);
+            // rgblight_sethsv(HSV_BLUE); // 
+            rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
+// rgb_matrix_set_color_all(RGB_BLUE);            // rgblight_mode(7);
             // rgblight_sethsv_at(36, 255, 255, 3);
             // rgblight_sethsv_coral_at(3);
             break;

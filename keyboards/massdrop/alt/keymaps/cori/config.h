@@ -110,13 +110,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DISABLE_RGB_MATRIX_DUAL_BEACON          // Full gradient spinning around center of keyboard
 #define DISABLE_RGB_MATRIX_RAINBOW_BEACON       // Full tighter gradient spinning around center of keyboard
 #define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS    // Full dual gradients spinning two halfs of keyboard
-// #define DISABLE_RGB_MATRIX_RAINDROPS            // Randomly changes a single key's hue
+#define DISABLE_RGB_MATRIX_RAINDROPS            // Randomly changes a single key's hue
 #define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS  // Randomly changes a single key's hue and saturation
 // =================================================== Requires RGB_MATRIX_FRAMEBUFFER_EFFECTS =============================================================
 #define DISABLE_RGB_MATRIX_TYPING_HEATMAP                // How hot is your WPM!
 #define DISABLE_RGB_MATRIX_DIGITAL_RAIN  // That famous computer simulation
 // =================================================== RGB_MATRIX_KEYPRESSES OR RGB_MATRIX_KEYRELEASES =====================================================
-#define DISABLE_RGB_MATRIX_SOLID_REACTIVE  // Static single hue, pulses keys hit to shifted hue then fades to current hue
+// #define DISABLE_RGB_MATRIX_SOLID_REACTIVE  // Static single hue, pulses keys hit to shifted hue then fades to current hue
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE         // Pulses keys hit to hue & value then fades value out
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE        // Hue & value pulse near a single key hit then fades value out
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE   // Hue & value pulse near multiple key hits then fades value out
