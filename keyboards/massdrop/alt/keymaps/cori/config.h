@@ -92,10 +92,10 @@
 // #define RGB_DISABLE_WHEN_USB_SUSPENDED 			// turn off effects when suspended
 // #define RGB_MATRIX_LED_PROCESS_LIMIT (DRIVER_LED_TOTAL + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
 // #define RGB_MATRIX_LED_FLUSH_LIMIT 16 					// limits in milliseconds how frequently an animation will update the LEDs. 16 (16ms) is equivalent to limiting to 60fps (increases keyboard responsiveness)
-#define RGBLIGHT_ANIMATIONS             					// Run RGB animations
+// #define RGBLIGHT_ANIMATIONS             					// Run RGB animations
 // #define RGBLIGHT_ANIMATIONS             					// Enable all additional animation modes.
-#define RGBLIGHT_EFFECT_ALTERNATING     					// Enable alternating animation mode.
-#define RGBLIGHT_EFFECT_BREATHING       					// Enable breathing animation mode.
+// #define RGBLIGHT_EFFECT_ALTERNATING     					// Enable alternating animation mode.
+// #define RGBLIGHT_EFFECT_BREATHING       					// Enable breathing animation mode.
 // #define RGBLIGHT_EFFECT_CHRISTMAS       					// Enable christmas animation mode.
 // #define RGBLIGHT_EFFECT_KNIGHT          					// Enable knight animation mode.
 // #define RGBLIGHT_EFFECT_RAINBOW_MOOD    					// Enable rainbow mood animation mode.
@@ -140,7 +140,7 @@
 // #define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS           // Randomly changes a single key's hue and saturation
 // =================================================== Requires RGB_MATRIX_FRAMEBUFFER_EFFECTS =============================================================
 // #define DISABLE_RGB_MATRIX_TYPING_HEATMAP                // How hot is your WPM!
-#define DISABLE_RGB_MATRIX_DIGITAL_RAIN                  	// That famous computer simulation
+// #define DISABLE_RGB_MATRIX_DIGITAL_RAIN                  	// That famous computer simulation
 // =================================================== RGB_MATRIX_KEYPRESSES OR RGB_MATRIX_KEYRELEASES =====================================================
 // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE                // Static single hue, pulses keys hit to shifted hue then fades to current hue
 // #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE         // Pulses keys hit to hue & value then fades value out

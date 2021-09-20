@@ -16,6 +16,11 @@
 
 #include "keymap.h"
 
+enum layer_names {
+    _QWERTY,
+    _FUNC
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
@@ -27,14 +32,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT,                             KC_SPC,                             KC_RALT, MO(1),   KC_LEFT, KC_DOWN, KC_RGHT
     ),
     */
-   [0] = LAYOUT_65_ansi_blocker(
+   [_QWERTY] = LAYOUT_65_ansi_blocker(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,   KC_EQL,    KC_BSPC,   KC_DEL,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,  KC_BSLS,   KC_HOME,
         KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,           KC_ENT,    KC_PGUP,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,             KC_UP,   KC_PGDN,
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, MO(1),     KC_LEFT,  KC_DOWN, KC_RGHT
         ),
-    [1] = LAYOUT_65_ansi_blocker(
+    [_FUNC] = LAYOUT_65_ansi_blocker(
         KC_GRV,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_F13,   KC_CALC,
         RGB_M_P, RGB_SPD,  RGB_HUI, RGB_SPI, RGB_SAI, RGB_VAI, _______, U_T_AUTO, _______, _______, KC_PSCR, KC_SLCK, KC_PAUS, _______, KC_MYCM,
         RGB_TOG, RGB_RMOD, RGB_HUD, RGB_MOD, RGB_SAD, RGB_VAD, _______, _______, _______, _______, _______, _______,          KC_MUTE,  KC_VOLU,
@@ -82,21 +87,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define _______ {0, 0, 0}
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [0] = {
+    [_QWERTY] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, CHART,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, CHART,   CHART,   CHART,   _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          CHART,   _______,
-        _______, _______, _______,                            _______,                            _______, _______, CHART,   CHART,   CHART,
+        _______, _______, _______,                            _______,                            _______, _______, CHART,   CHART,   CHART
         //UnderGlow
-        CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,
-        CHART,                                                                                                                        CHART,
-        CHART,                                                                                                                        CHART,
-        CHART,                                                                                                                        CHART,
-        CHART,                                                                                                                        CHART,
-        CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART
+        // CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,
+        // CHART,                                                                                                                        CHART,
+        // CHART,                                                                                                                        CHART,
+        // CHART,                                                                                                                        CHART,
+        // CHART,                                                                                                                        CHART,
+        // CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART
         },
-    [1] = {
+    [_FUNC] = {
         CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,    CHART,   CHART,   CHART,   CHART,     CHART,    BLUE,
         GOLD,    PINK,    AZURE,   PINK,    TURQ,    TEAL,    _______, RED,     _______,  _______, GREEN,   BLUE,    GOLD,      _______,  BLUE,
         TEAL,    MAGENT,  AZURE,   MAGENT,  TURQ,    TEAL,    _______, _______, _______,  _______, _______, _______,                GOLD, BLUE,
@@ -189,9 +194,10 @@ void set_layer_color(int layer) {
             .v = pgm_read_byte(&ledmap[layer][i][2]),
         };
         if (hsv.h || hsv.s || hsv.v) {
-            RGB rgb = hsv_to_rgb(hsv);
-            float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
+            rgb_matrix_sethsv(hsv.h, hsv.s, hsv.v);
+            // RGB rgb = hsv_to_rgb(hsv);
+            // float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            // rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
         } else if (layer == 1) {
             // Only deactivate non-defined key LEDs at layers other than FN. Because at FN we have RGB adjustments and need to see them live.
             // If the values are all false then it's a transparent key and deactivate LED at this layer
@@ -199,11 +205,46 @@ void set_layer_color(int layer) {
         }
     }
 }
+
+void rgb_set_color_by_flag(int FLAG, uint8_t red, uint8_t green, uint8_t blue) {
+    
+            for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+                if(g_led_config.flags[i] & FLAG) {
+                    rgb_matrix_set_color(i, red, green, blue);
+                } //else {
+                //     rgb_matrix_set_color(i, 255, 0, 0);
+                // }
+            }
+}
+
 void rgb_matrix_indicators_user(void) {
-    if ( disable_layer_color ||
-        rgb_matrix_get_flags() == LED_FLAG_NONE ||
-        rgb_matrix_get_flags() == LED_FLAG_UNDERGLOW) {
-            return;
-        }
-    set_layer_color(get_highest_layer(layer_state));
+    // if ( disable_layer_color ||
+    //     rgb_matrix_get_flags() == LED_FLAG_NONE ||
+    //     rgb_matrix_get_flags() == LED_FLAG_UNDERGLOW) {
+    //         return;
+    //     }
+//     set_layer_color(get_highest_layer(layer_state));
+// rgb_set_color_by_flag(LED_FLAG_MODIFIER, RGB_TEAL);
+// rgb_matrix_set_color(10,255,0,0);00
+// rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
+            // rgb_set_color_by_flag(LED_FLAG_KEYLIGHT, RGB_PURPLE);
+            // rgb_set_color_by_flag(LED_FLAG_MODIFIER, RGB_SPRINGGREEN);
+            // rgb_set_color_by_flag(LED_FLAG_UNDERGLOW, RGB_TURQUOISE);
+            // rgb_matrix_set_color_all(RGB_MAGENTA);
+            // rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
+            set_layer_color(_QWERTY);
+            break;
+        case _FUNC:
+            dprintf("Switching to L_FUNC");
+            set_layer_color(_FUNC);
+            // rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
+            break;
+    }
+    // set_layer_color(get_highest_layer(layer_state));
+  return state;
 }
