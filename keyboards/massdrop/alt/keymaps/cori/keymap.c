@@ -88,18 +88,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
     [_QWERTY] = {
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, CHART,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, CHART,   CHART,   CHART,   _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          CHART,   _______,
-        _______, _______, _______,                            _______,                            _______, _______, CHART,   CHART,   CHART
+        // _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        // _______, _______, CHART,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        // _______, CHART,   CHART,   CHART,   _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
+        // _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          CHART,   _______,
+        // _______, _______, _______,                            _______,                            _______, _______, CHART,   CHART,   CHART
         //UnderGlow
-        // CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,
-        // CHART,                                                                                                                        CHART,
-        // CHART,                                                                                                                        CHART,
-        // CHART,                                                                                                                        CHART,
-        // CHART,                                                                                                                        CHART,
-        // CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART
+        PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,
+        PURPLE,                                                                                                                        PURPLE,
+        PURPLE,                                                                                                                        PURPLE,
+        PURPLE,                                                                                                                        PURPLE,
+        PURPLE,                                                                                                                        PURPLE,
+        PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE
         },
     [_FUNC] = {
         CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,    CHART,   CHART,   CHART,   CHART,     CHART,    BLUE,
@@ -237,11 +237,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             // rgb_set_color_by_flag(LED_FLAG_UNDERGLOW, RGB_TURQUOISE);
             // rgb_matrix_set_color_all(RGB_MAGENTA);
             // rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
-            set_layer_color(_QWERTY);
+            // set_layer_color(_QWERTY);
             break;
         case _FUNC:
             dprintf("Switching to L_FUNC");
-            set_layer_color(_FUNC);
+            // set_layer_color(_FUNC);
             // rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
             break;
     }
