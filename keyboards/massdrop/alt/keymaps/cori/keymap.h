@@ -39,6 +39,7 @@
 #define PURPLE {HSV_PURPLE}
 #define MAGENT {HSV_MAGENTA}
 #define PINK {HSV_PINK}
+#define DARK_PURPLE {190,255,100}
 
 
 

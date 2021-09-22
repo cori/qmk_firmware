@@ -94,12 +94,12 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,   _______,
         _______, _______, _______,                            _______,                            _______, _______, _______,   _______,   _______,
         //UnderGlow
-        PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,
-        PURPLE,                                                                                                                        PURPLE,
-        PURPLE,                                                                                                                        PURPLE,
-        PURPLE,                                                                                                                        PURPLE,
-        PURPLE,                                                                                                                        PURPLE,
-        PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE
+        DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,
+        DARK_PURPLE,                                                                                                                        DARK_PURPLE,
+        DARK_PURPLE,                                                                                                                        DARK_PURPLE,
+        DARK_PURPLE,                                                                                                                        DARK_PURPLE,
+        DARK_PURPLE,                                                                                                                        DARK_PURPLE,
+        DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE,   DARK_PURPLE
         },
     [_FUNC] = {
         CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,    CHART,   CHART,   CHART,   CHART,     CHART,    BLUE,
