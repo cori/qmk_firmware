@@ -218,12 +218,12 @@ void rgb_set_color_by_flag(int FLAG, uint8_t red, uint8_t green, uint8_t blue) {
 }
 
 void rgb_matrix_indicators_user(void) {
-    // if ( disable_layer_color ||
-    //     rgb_matrix_get_flags() == LED_FLAG_NONE ||
-    //     rgb_matrix_get_flags() == LED_FLAG_UNDERGLOW) {
-    //         return;
-    //     }
-//     set_layer_color(get_highest_layer(layer_state));
+    if ( disable_layer_color ||
+        rgb_matrix_get_flags() == LED_FLAG_NONE ||
+        rgb_matrix_get_flags() == LED_FLAG_UNDERGLOW) {
+            return;
+        }
+    set_layer_color(get_highest_layer(layer_state));
 // rgb_set_color_by_flag(LED_FLAG_MODIFIER, RGB_TEAL);
 // rgb_matrix_set_color(10,255,0,0);00
 // rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
