@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,   KC_EQL,    KC_BSPC,   KC_DEL,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,  KC_BSLS,   KC_HOME,
         KC_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,           KC_ENT,    KC_PGUP,
-        LSFT_T(KC_LPRN), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_RPRN),             KC_UP,   KC_PGDN,
+        KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,             KC_UP,   KC_PGDN,
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, MO(1),     KC_LEFT,  KC_DOWN, KC_RGHT
         ),
     [_FUNC] = LAYOUT_65_ansi_blocker(
@@ -92,7 +92,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         _______, _______, _______,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______,   _______,   _______,   _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,   _______,
-        _______, _______, _______,                            _______,                            _______, _______, _______,   _______,   _______
+        _______, _______, _______,                            _______,                            _______, _______, _______,   _______,   _______,
         //UnderGlow
         PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,   PURPLE,
         PURPLE,                                                                                                                        PURPLE,
@@ -103,8 +103,8 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
         },
     [_FUNC] = {
         CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,   CHART,    CHART,   CHART,   CHART,   CHART,     CHART,    BLUE,
-        MAGENT,    PINK,    AZURE,   PINK,    TURQ,    TEAL,    _______, RED,     _______,  _______, GREEN,   BLUE,    MAGENT,      _______,  BLUE,
-        TEAL,    MAGENT,  AZURE,   MAGENT,  TURQ,    TEAL,    _______, _______, _______,  _______, _______, _______,                MAGENT, BLUE,
+        _______,    _______,    _______,   _______,    _______,    _______,    _______, RED,     _______,  _______, GREEN,   BLUE,    MAGENT,      _______,  BLUE,
+        _______,    _______,  _______,   _______,  _______,    _______,    _______, _______, _______,  _______, _______, _______,                MAGENT, BLUE,
         _______, _______, _______, _______, _______, RED,     RED,     RED,     MAGENT,  MAGENT, _______, _______,                MAGENT, BLUE,
         _______, _______, _______,                            MAGENT,                                _______, _______,       PURPLE,  MAGENT, PURPLE,
         //UnderGlow
@@ -194,10 +194,10 @@ void set_layer_color(int layer) {
             .v = pgm_read_byte(&ledmap[layer][i][2]),
         };
         if (hsv.h || hsv.s || hsv.v) {
-            rgb_matrix_sethsv(hsv.h, hsv.s, hsv.v);
-            // RGB rgb = hsv_to_rgb(hsv);
-            // float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-            // rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
+            // rgb_matrix_sethsv(hsv.h, hsv.s, hsv.v);
+            RGB rgb = hsv_to_rgb(hsv);
+            float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
         } else if (layer == 1) {
             // Only deactivate non-defined key LEDs at layers other than FN. Because at FN we have RGB adjustments and need to see them live.
             // If the values are all false then it's a transparent key and deactivate LED at this layer
@@ -229,22 +229,22 @@ void rgb_matrix_indicators_user(void) {
 // rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
-            // rgb_set_color_by_flag(LED_FLAG_KEYLIGHT, RGB_PURPLE);
-            // rgb_set_color_by_flag(LED_FLAG_MODIFIER, RGB_SPRINGGREEN);
-            // rgb_set_color_by_flag(LED_FLAG_UNDERGLOW, RGB_TURQUOISE);
-            // rgb_matrix_set_color_all(RGB_MAGENTA);
-            // rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
-            // set_layer_color(_QWERTY);
-            break;
-        case _FUNC:
-            dprintf("Switching to L_FUNC");
-            // set_layer_color(_FUNC);
-            // rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
-            break;
-    }
-    // set_layer_color(get_highest_layer(layer_state));
-  return state;
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     switch (get_highest_layer(state)) {
+//         case _QWERTY: // Name of my 0-th layer (includes alphas and caps-lock)
+//             // rgb_set_color_by_flag(LED_FLAG_KEYLIGHT, RGB_PURPLE);
+//             // rgb_set_color_by_flag(LED_FLAG_MODIFIER, RGB_SPRINGGREEN);
+//             // rgb_set_color_by_flag(LED_FLAG_UNDERGLOW, RGB_TURQUOISE);
+//             // rgb_matrix_set_color_all(RGB_MAGENTA);
+//             // rgb_matrix_sethsv(HSV_MAGENTA); // sets the color to teal/cyan without saving
+//             // set_layer_color(_QWERTY);
+//             break;
+//         case _FUNC:
+//             dprintf("Switching to L_FUNC");
+//             // set_layer_color(_FUNC);
+//             // rgb_matrix_sethsv(HSV_BLUE); // sets the color to teal/cyan without saving
+//             break;
+//     }
+//     // set_layer_color(get_highest_layer(layer_state));
+//   return state;
+// }
